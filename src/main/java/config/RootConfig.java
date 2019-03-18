@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = {"sample"})
+@ComponentScan(basePackages = {"service"})
 @MapperScan(basePackages = {"mapper"})
 public class RootConfig {
     @Bean
