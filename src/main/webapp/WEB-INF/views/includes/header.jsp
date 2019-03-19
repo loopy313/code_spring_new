@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/board/list">SB Admin v2.0</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -375,4 +375,4 @@
 
     <div id="page-wrapper">
     <!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.js"></script>
