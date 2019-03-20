@@ -11,14 +11,21 @@
         </layout>
     </appender>
 
-    <logger name="jdbc.audit">
+    <logger name="jdbc.audit" additivity="false">
         <level value="warn"/>
+        <appender-ref ref="console"/>
     </logger>
-    <logger name="jdbc.resultset">
+    <logger name="jdbc.resultset" additivity="false">
         <level value="warn"/>
+        <appender-ref ref="console"/>
     </logger>
-    <logger name="jdbc.connect">
+    <logger name="jdbc.connection" additivity="false">
         <level value="warn"/>
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="jdbc.sqlonly" additivity="false">
+        <level value="warn"/>
+        <appender-ref ref="console"/>
     </logger>
     <!-- Root Logger -->
     <root>

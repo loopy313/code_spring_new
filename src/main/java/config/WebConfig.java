@@ -4,7 +4,6 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
-import javax.servlet.ServletRegistration;
 
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
@@ -22,10 +21,10 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         return new String[]{"/"};
     }
 
-    @Override
-    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setInitParameter("throwExceptionIfNoHandlerFound","true");
-    }
+//    @Override
+//    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+//        registration.setInitParameter("throwExceptionIfNoHandlerFound","true");
+//    }
 
     @Override
     protected Filter[] getServletFilters() {

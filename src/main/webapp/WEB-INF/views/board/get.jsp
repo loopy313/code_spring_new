@@ -38,6 +38,8 @@
 
                 <form id="operForm" action="/board/modify" method="get">
                     <input type="hidden" name="bno" id="bno" value="<c:out value="${board.bno}"/>">
+                    <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>">
+                    <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>">
                 </form>
             </div>
         </div>
@@ -51,8 +53,9 @@
             operForm.submit();
         });
         $("button[data-oper='list']").on("click", function (e) {
+            operForm.find("#bno").remove();
             //removeall childelement
-            operForm.empty();
+            // operForm.empty();
             //remove node with 'id=bno'
             //operForm.find("#bno").remove();
             operForm.attr("action", "/board/list").submit();

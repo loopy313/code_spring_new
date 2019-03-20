@@ -31,6 +31,8 @@
                     <label>Writer</label>
                     <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>"/>
                 </div>
+                    <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>">
+                    <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>">
                     <button type="submit" data-oper="modify" class="btn btn-default">modify</button>
                     <button type="submit" data-oper="remove" class="btn btn-danger">remove</button>
                     <button type="submit" data-oper="list" class="btn btn-info">List</button>
@@ -54,7 +56,11 @@
                 //self.location="/board/list";
                 //return;
                 formObj.attr("action","/board/list").attr("method","get");
+                var pageNumTag=$("input[name='pageNum']").clone();
+                var amountTag=$("input[name='amount']").clone();
                 formObj.empty();
+                formObj.append(pageNumTag);
+                formObj.append(amountTag);
             }
             formObj.submit();
         });

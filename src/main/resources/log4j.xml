@@ -12,6 +12,15 @@
         </layout>
     </appender>
 
+    <logger name="jdbc.connection" additivity="false">
+        <level value="ERROR" />
+        <appender-ref ref="console" />
+    </logger>
+
+    <logger name="jdbc.sqlonly" additivity="false">
+        <level value="WARN" />
+        <appender-ref ref="console" />
+    </logger>
     <!-- Root Logger -->
     <root>
         <priority value="info"/>

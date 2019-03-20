@@ -1,6 +1,7 @@
 package service;
 
 import domain.BoardVO;
+import domain.Criteria;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import mapper.BoardMapper;
@@ -40,8 +41,14 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<BoardVO> getList() {
-        log.info("getList........");
-        return mapper.getList();
+    public List<BoardVO> getList(Criteria cri) {
+        log.info("get List with criteria: "+cri);
+        return mapper.getListWithPaging(cri);
+    }
+
+    @Override
+    public int getTotal(Criteria cri) {
+        log.info("get total count");
+        return mapper.getTotalCount(cri);
     }
 }

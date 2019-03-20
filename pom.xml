@@ -168,7 +168,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- cp -->
+        <!-- connection pool -->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
