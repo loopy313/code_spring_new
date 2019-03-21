@@ -20,13 +20,13 @@ public class BoardMapperTests {
     private BoardMapper mapper;
 
     @Test
-    public void testGetList(){
-        mapper.getList().forEach(board->log.info(board));
+    public void testGetList() {
+        mapper.getList().forEach(board -> log.info(board));
     }
 
     @Test
-    public void testInsert(){
-        BoardVO board=new BoardVO();
+    public void testInsert() {
+        BoardVO board = new BoardVO();
         board.setTitle("new title");
         board.setWriter("new writer");
         board.setContent("new content");
@@ -34,8 +34,8 @@ public class BoardMapperTests {
     }
 
     @Test
-    public void testInsertSelectKey(){
-        BoardVO board=new BoardVO();
+    public void testInsertSelectKey() {
+        BoardVO board = new BoardVO();
         board.setTitle("new title");
         board.setContent("new content");
         board.setWriter("new writer");
@@ -44,30 +44,48 @@ public class BoardMapperTests {
     }
 
     @Test
-    public void testRead(){
-        BoardVO board=mapper.read(5L);
+    public void testRead() {
+        BoardVO board = mapper.read(5L);
         log.info(board);
     }
 
     @Test
-    public void testUpdate(){
-        BoardVO board=new BoardVO();
+    public void testUpdate() {
+        BoardVO board = new BoardVO();
         board.setBno(5l);
         board.setTitle("update title");
         board.setContent("update content");
         board.setWriter("upate writer");
 
-        int count=mapper.update(board);
-        log.info("UPDATE COUNT: "+count);
+        int count = mapper.update(board);
+        log.info("UPDATE COUNT: " + count);
     }
 
     @Test
-    public void testPaging(){
-        Criteria cri=new Criteria();
+    public void testPaging() {
+        Criteria cri = new Criteria();
         cri.setAmount(5);
         cri.setPageNum(3);
-        List<BoardVO> list= mapper.getListWithPaging(cri);
+        List<BoardVO> list = mapper.getListWithPaging(cri);
 
+        list.forEach(board -> log.info(board));
+    }
+
+    @Test
+    public void testSplit() {
+        String str = "abc def";
+        for (String s : str.split(" ")) {
+            System.out.println(s);
+        }
+    }
+
+    @Test
+    public void testSearch() {
+        Criteria cri = new Criteria();
+        cri.setKeyword("asdf");
+        cri.setType("TC");
+
+        List<BoardVO> list = mapper.getListWithPaging(cri);
         list.forEach(board -> log.info(board));
     }
 }
