@@ -10,7 +10,7 @@ public class ReplyVO {
     private Long bno;
 
     private String reply;
-    private String replayer;
+    private String replyer;
     private Date replyDate;
     private Date updateDate;
 }
