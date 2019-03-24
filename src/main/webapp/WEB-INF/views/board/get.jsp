@@ -84,7 +84,6 @@
 
         var bnoValue = '<c:out value="${board.bno}"/>';
         var replyUL = $(".chat");
-        showList(1);
 
         function showList(page) {
             replyService.getList({bno: bnoValue, page: page || 1}, function (list) {
@@ -94,21 +93,19 @@
                     return;
                 }
                 for (var i = 0, len = list.length || 0; i < len; ++i) {
-                    str+=<li class="left clearfix" data-rno=list[i].>
-                        <div>
-                        <div class="header">
-                        <strong class="primary-font">user00</strong>
-                        <jsp:useBean id="date" class="java.util.Date"/>
-                        <small class="pull-right text-muted">
-                        <fmt:formatDate value="${date}"
-                                        pattern="yyyy-MM-dd hh:mm"/></small>
-                        </div>
-                        <p>Good job!</p>
-                    </div>
-                    </li>
+                        str+="<li class='left clearfix' data-rno='"+list[i]+"'>";
+                        str+="<div>";
+                        str+="   <div class='header'>";
+                        str+="       <strong class='primary-font'>"+list[i].replyer+"</strong>";
+                        str+="       <small class='pull-right text-muted'>"+replyService.displayTime(list[i].replyDate)+"</small>";
+                        str+="   </div>";
+                        str+="   <p>"+list[i].reply+"</p>";
+                        str+="</div></li>";
                 }
-            })
+                replyUL.html(str);
+            });
         }
+        showList(1);
 
         // replyService.add({reply:"JS Test",replyer:"tester",bno:bnoValue},function(result){
         //     alert("RESULT: "+result);

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.ReplyService;
 
+import javax.sound.midi.Soundbank;
 import java.util.List;
 
 @RequestMapping("/replies/")
@@ -34,6 +35,7 @@ public class ReplyController {
         log.info("getList....................");
         Criteria cri = new Criteria(page, 10);
         log.info(cri);
+        List<ReplyVO> li=service.getList(cri,bno);
         return new ResponseEntity<>(service.getList(cri, bno), HttpStatus.OK);
     }
 
