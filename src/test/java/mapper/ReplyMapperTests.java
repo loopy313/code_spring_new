@@ -10,11 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.inject.Inject;
-
 import java.util.List;
 import java.util.stream.IntStream;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {config.RootConfig.class})
@@ -26,9 +23,9 @@ public class ReplyMapperTests {
 
     @Test
     public void testCreate(){
-        IntStream.rangeClosed(1,10).forEach(value -> {
+        IntStream.rangeClosed(1,1).forEach(value -> {
             ReplyVO vo=new ReplyVO();
-            vo.setBno(bnoArr[value%5]);
+            vo.setBno(65536L);
             vo.setReply("댓글 테스트"+value);
             vo.setReplyer("replyer"+value);
             mapper.insert(vo);

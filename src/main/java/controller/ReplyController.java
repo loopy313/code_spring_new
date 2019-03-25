@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Criteria;
+import domain.ReplyPageDTO;
 import domain.ReplyVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -9,9 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.ReplyService;
-
-import javax.sound.midi.Soundbank;
-import java.util.List;
 
 @RequestMapping("/replies/")
 @RestController
@@ -30,13 +28,12 @@ public class ReplyController {
         return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping(value = "/pages/{bno}/{page}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-    public ResponseEntity<List<ReplyVO>> getList(@PathVariable("bno") Long bno, @PathVariable("page") int page) {
-        log.info("getList....................");
-        Criteria cri = new Criteria(page, 10);
-        log.info(cri);
-        List<ReplyVO> li=service.getList(cri,bno);
-        return new ResponseEntity<>(service.getList(cri, bno), HttpStatus.OK);
+    @GetMapping(value = "/pages/{bno}/{page}",produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseEntity<ReplyPageDTO> getList(@PathVariable("bno")Long bno,@PathVariable("page")int page){
+        Criteria cri=new Criteria(page,10);
+        log.info("get Reply List bno : "+bno);
+        log.info("cri : "+cri);
+        return new ResponseEntity<>(service.getListPage(cri,bno), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{rno}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -62,4 +59,5 @@ public class ReplyController {
         return service.modify(vo) == 1 ?
                 new ResponseEntity<>("modify success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 }
