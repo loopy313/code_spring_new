@@ -63,5 +63,4 @@ public class SampleController {
         log.info("convert.....ticket"+ticket);
         return ticket;
     }
-
 }

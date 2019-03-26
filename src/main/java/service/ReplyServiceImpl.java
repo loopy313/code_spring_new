@@ -5,8 +5,10 @@ import domain.ReplyPageDTO;
 import domain.ReplyVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import mapper.BoardMapper;
 import mapper.ReplyMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -17,11 +19,16 @@ public class ReplyServiceImpl implements ReplyService {
 
     @Setter(onMethod_ = @Inject)
     private ReplyMapper mapper;
+    @Setter(onMethod_ = @Inject)
+    private BoardMapper boardMapper;
 
+    @Transactional
     @Override
     public int register(ReplyVO vo) {
         log.info("register....." + vo);
+        boardMapper.updateReplyCnt(vo.getBno(),1);
         return mapper.insert(vo);
+
     }
 
     @Override
@@ -36,9 +43,12 @@ public class ReplyServiceImpl implements ReplyService {
         return mapper.update(reply);
     }
 
+    @Transactional
     @Override
     public int remove(Long rno) {
         log.info("remove....." + rno);
+        ReplyVO vo=mapper.read(rno);
+        boardMapper.updateReplyCnt(vo.getBno(),-1);
         return mapper.delete(rno);
     }
 

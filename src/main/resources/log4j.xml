@@ -11,49 +11,24 @@
             <param name="ConversionPattern" value="%-5p: %c - %m%n"/>
         </layout>
     </appender>
-
-    <!-- log SQL (pre-execution) plus exceptions caused by SQL -->
-    <logger name="jdbc.sqlonly" additivity="false">
-        <level value="debug"/>
-        <appender-ref ref="sql-appender"/>
-    </logger>
-
-    <!-- log SQL with timing information, post execution -->
-    <logger name="jdbc.sqltiming" additivity="false">
-        <level value="fatal"/>
-        <appender-ref ref="sql-timing-appender"/>
-    </logger>
-
     <!-- only use the two logs below to trace ALL JDBC information,
          NOTE:  This can be very voluminous!  -->
 
-    <!-- log all jdbc calls except ResultSet calls -->
-    <logger name="jdbc.audit" additivity="false">
-        <level value="fatal"/>
-        <appender-ref ref="jdbc-appender"/>
-    </logger>
+    <!--&lt;!&ndash; log all jdbc calls except ResultSet calls &ndash;&gt;-->
+    <!--<logger name="jdbc.audit" additivity="true">-->
+        <!--<level value="info"/>-->
+        <!--<appender-ref ref="console"/>-->
+    <!--</logger>-->
 
-    <!-- log the jdbc ResultSet calls -->
-    <logger name="jdbc.resultset" additivity="false">
-        <level value="fatal"/>
-        <appender-ref ref="jdbc-appender"/>
-    </logger>
-
-    <!-- log connection open/close events and dump of all open connection numbers -->
-    <logger name="jdbc.connection" additivity="false">
-        <level value="fatal"/>
-        <appender-ref ref="connection-appender"/>
-    </logger>
-
-    <!-- this log is for internal debugging of log4jdbc, itself -->
-    <!-- debug logging for log4jdbc itself -->
-    <logger name="log4jdbc.debug" additivity="false">
-        <level value="debug"/>
-        <appender-ref ref="stdout-appender"/>
-    </logger>
-    <!-- Root Logger -->
+    <!--&lt;!&ndash; this log is for internal debugging of log4jdbc, itself &ndash;&gt;-->
+    <!--&lt;!&ndash; debug logging for log4jdbc itself &ndash;&gt;-->
+    <!--<logger name="log4jdbc.debug" additivity="true">-->
+        <!--<level value="info"/>-->
+        <!--<appender-ref ref="console"/>-->
+    <!--</logger>-->
+    <!--&lt;!&ndash; Root Logger &ndash;&gt;-->
     <root>
-        <priority value="info"/>
+        <priority value="all"/>
         <appender-ref ref="console"/>
     </root>
 
