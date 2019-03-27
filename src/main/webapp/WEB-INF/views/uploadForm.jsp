@@ -11,9 +11,9 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="uploadFormAction" method="post" enctype="multipart/form-data">
-        <input type="file" name="uploadFile" multiple>
-        <button>Submit</button>
-    </form>
+<form action="uploadFormAction" method="post" enctype="multipart/form-data">
+    <input type="file" name="uploadFile" multiple>
+    <button>Submit</button>
+</form>
 </body>
 </html>
