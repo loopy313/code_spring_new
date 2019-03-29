@@ -10,7 +10,7 @@ import javax.servlet.ServletRegistration;
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{RootConfig.class};
+        return new Class[]{RootConfig.class,SecurityConfig.class};
     }
 
     @Override
@@ -33,6 +33,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         CharacterEncodingFilter encodingFilter=new CharacterEncodingFilter();
         encodingFilter.setEncoding("utf-8");
         encodingFilter.setForceEncoding(true);
+
         return new Filter[]{encodingFilter};
     }
 

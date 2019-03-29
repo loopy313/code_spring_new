@@ -13,7 +13,7 @@ import service.BoardService;
 
 @Controller
 @Log4j
-@RequestMapping("/board/*")
+@RequestMapping("board/*")
 @AllArgsConstructor
 public class BoardController {
 
@@ -34,11 +34,6 @@ public class BoardController {
         service.register(board);
         rttr.addFlashAttribute("result", board.getBno());
         return "redirect:/board/list";
-    }
-
-    @GetMapping("/register")
-    public void register() {
-
     }
 
     @GetMapping({"/get", "/modify"})
@@ -66,4 +61,5 @@ public class BoardController {
         cri.getListLink();
         return "redirect:/board/list"+cri.getListLink();
     }
+
 }

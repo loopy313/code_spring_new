@@ -93,6 +93,7 @@
                     <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
                 </form>
                 <!-- end Pagination -->
+                <img src="/board/register" width="500px" height="200px">
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
